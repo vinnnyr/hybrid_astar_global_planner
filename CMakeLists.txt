@@ -18,8 +18,6 @@ endif()
 if(NOT OMPL_FOUND)
     message(AUTHOR_WARNING,"Open Motion Planning Library not found")
 endif(NOT OMPL_FOUND)
-set(OMPL_INCLUDE_DIRS "/usr/local/include/ompl")
-set(OMPL_LIBRARIES "/usr/local/lib/libompl.so")
 include_directories(include ${catkin_INCLUDE_DIRS})
 include_directories(include ${OMPL_INCLUDE_DIRS})
 include_directories(include include)
@@ -91,16 +89,16 @@ target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${OMPL_LIBRARIES})
 #  ${catkin_LIBRARIES}
 #)
 
-#target_link_libraries(hybrid_planner ${OMPL_LIBRARIES})
-
-#install(TARGETS ${PROJECT_NAME} hybrid_planner
-#  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+target_link_libraries(hybrid_astar_global_planner ${catkin_LIBRARIES})
+target_link_libraries(hybrid_astar_global_planner ${OMPL_LIBRARIES})
+install(TARGETS ${PROJECT_NAME} hybrid_astar_global_planner
+  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 #install(DIRECTORY include/${PROJECT_NAME}/
 #  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 #  PATTERN ".svn" EXCLUDE)
 
-#install(FILES bgp_plugin.xml
-#  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
+install(FILES bgp_plugin.xml
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
