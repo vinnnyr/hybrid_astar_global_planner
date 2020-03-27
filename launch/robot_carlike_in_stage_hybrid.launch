@@ -26,14 +26,14 @@
   		<rosparam file="$(find teb_local_planner_tutorials)/cfg/carlike/teb_local_planner_params.yaml" command="load" />
 
 		<param name="base_global_planner" value="HybridGlobalPlanner" />
-		<param name="planner_frequency" value="0.0" />
+		<param name="planner_frequency" value="10.0" />
 		<param name="planner_patience" value="60.0" />
 
 		<param name="base_local_planner" value="teb_local_planner/TebLocalPlannerROS" />
 		<param name="controller_frequency" value="5.0" />
 		<param name="controller_patience" value="15.0" />
 
-                <param name="clearing_rotation_allowed" value="false" /> <!-- Our carlike robot is not able to rotate in place -->
+        <param name="clearing_rotation_allowed" value="false" /> <!-- Our carlike robot is not able to rotate in place -->
 	</node>
 
 
@@ -45,7 +45,7 @@
 	<node pkg="amcl" type="amcl" name="amcl" output="screen">
 		<rosparam file="$(find teb_local_planner_tutorials)/cfg/amcl_params.yaml" command="load" />
 
-	        <param name="initial_pose_x"            value="2"/>
+	    <param name="initial_pose_x"            value="2"/>
 		<param name="initial_pose_y"            value="2"/>
 		<param name="initial_pose_a"            value="0"/>
 	</node>
